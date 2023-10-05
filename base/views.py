@@ -1,14 +1,21 @@
 from rest_framework import generics
-from .models import Category, Product, Parties
-from .serializers import CategorySerializer, ProductSerializer, PartiesSerializer
+from django.urls import path
+from .models import ProductCategory, Product, Parties, ExpenseCategory, Expense
+from .serializers import (
+    ProductCategorySerializer,
+    ProductSerializer,
+    PartiesSerializer,
+    ExpenseCategorySerializer,
+    ExpenseSerializer,
+)
 
-class CategoryListView(generics.ListCreateAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+class ProductCategoryListView(generics.ListCreateAPIView):
+    queryset = ProductCategory.objects.all()
+    serializer_class = ProductCategorySerializer
 
-class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+class ProductCategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ProductCategory.objects.all()
+    serializer_class = ProductCategorySerializer
 
 class ProductListView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
@@ -25,3 +32,19 @@ class PartiesListView(generics.ListCreateAPIView):
 class PartiesDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Parties.objects.all()
     serializer_class = PartiesSerializer
+
+class ExpenseCategoryListView(generics.ListCreateAPIView):
+    queryset = ExpenseCategory.objects.all()
+    serializer_class = ExpenseCategorySerializer
+
+class ExpenseCategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ExpenseCategory.objects.all()
+    serializer_class = ExpenseCategorySerializer
+
+class ExpenseListView(generics.ListCreateAPIView):
+    queryset = Expense.objects.all()
+    serializer_class = ExpenseSerializer
+
+class ExpenseDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Expense.objects.all()
+    serializer_class = ExpenseSerializer
