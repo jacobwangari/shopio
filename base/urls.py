@@ -11,12 +11,18 @@ from .views import (
     ExpenseCategoryDetailView,
     ExpenseListView,
     ExpenseDetailView,
+    UserRegisterView,
+    UserLoginView,
+    UserLogoutView,
+    UserListView
 )
 
 
-
-
 urlpatterns = [
+    path('users/', UserListView.as_view(), name='user_list'),  
+    path('register/', UserRegisterView.as_view(), name='user-register'),
+    path('login/', UserLoginView.as_view(), name='user-login'),
+    path('logout/', UserLogoutView.as_view(), name='user-logout'),
     path('product-categories/', ProductCategoryListView.as_view(), name='product-category-list-create'),
     path('product-categories/<int:pk>/', ProductCategoryDetailView.as_view(), name='product-category-detail'),
     path('products/', ProductListView.as_view(), name='product-list-create'),

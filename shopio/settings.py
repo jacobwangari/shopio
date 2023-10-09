@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'base.User'
 
 # Application definition
 
@@ -38,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'knox',
+    'rest_framework_simplejwt',
     'base',
 ]
 
@@ -135,3 +136,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mwasjac@gmail.com'
 EMAIL_HOST_PASSWORD = 'jwro mukt lrhd wtve'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
